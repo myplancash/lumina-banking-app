@@ -2,7 +2,6 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ![hero](https://github.com/myplancash/lumina-banking-app/assets/64751892/31f7da20-d344-4ec7-9c68-84a2281e6769)
 
-
 ## Getting Started
 
 First, run the development server:
