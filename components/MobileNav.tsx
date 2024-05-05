@@ -36,14 +36,14 @@ const MobileNav = ({user}: MobileNavProps) => {
         </SheetTrigger>
         <SheetContent side={"left"} className="border-none bg-white">
           <Link  href="/" className="mb-12 cursor-pointer flex items-center gap-1 px-4">
-          <Image 
-            src="/icons/logo.svg"
-            width={34}
-            height={34}
-            alt="Lumina logo"
-          />
-          <h1 className="text-26  font-ibm-plex-serif font-bold text-black-1 pl-1">Lumina</h1>
-        </Link>
+            <Image 
+              src="/icons/logo.svg"
+              width={34}
+              height={34}
+              alt="Lumina logo"
+            />
+            <h1 className="text-26  font-ibm-plex-serif font-bold text-black-1 pl-1">Lumina</h1>
+          </Link>
         {/* <SheetHeader>
           <SheetTitle>Hi, {user.name}</SheetTitle>
           <SheetDescription>{user.email}</SheetDescription>
