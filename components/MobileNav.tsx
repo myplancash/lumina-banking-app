@@ -17,10 +17,8 @@ import { usePathname } from "next/navigation"
 import path from "path"
 import Footer from "./Footer"
 
-
-const MobileNav = ({user}: MobileNavProps) => {
-
-  const pathname = usePathname()
+const MobileNav = ({ user }: MobileNavProps) => {
+  const pathname = usePathname();
 
   return (
     <section className="w-full max-w-[264px]">
@@ -81,7 +79,8 @@ const MobileNav = ({user}: MobileNavProps) => {
             </nav>
           </SheetClose>
 
-          <Footer user={user} type='mobile' />
+          
+          <Footer user={user} type="mobile" />
         </div> 
                   
         </SheetContent>
