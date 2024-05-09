@@ -50,6 +50,8 @@ const AuthForm = ({ type }: { type: string }) => {
         // Sign up with Appwrite & create plaid token
         
         if(type === 'sign-up') {
+          //will form a new userData object, letting typescript know that the data will be there
+          // ! let typescript know that will have the data there 
           const userData = {
             firstName: data.firstName!,
             lastName: data.lastName!,
@@ -62,7 +64,7 @@ const AuthForm = ({ type }: { type: string }) => {
             email: data.email,
             password: data.password
           }
-
+ 
           const newUser = await signUp(userData);
 
           setUser(newUser);
