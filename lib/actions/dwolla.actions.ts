@@ -5,7 +5,7 @@ import { Client } from "dwolla-v2";
 const getEnvironment = (): "production" | "sandbox" => {
   const environment = process.env.DWOLLA_ENV as string;
 
-  switch (environment) { 
+  switch (environment) {
     case "sandbox":
       return "sandbox";
     case "production":

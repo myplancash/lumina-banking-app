@@ -1,4 +1,4 @@
-"use server"; // means that all functions exported from this file will be server actions these are appwrite's user actions
+"use server";
 
 import { Client, Account, Databases, Users } from "node-appwrite";
 import { cookies } from "next/headers";
@@ -9,16 +9,15 @@ export async function createSessionClient() {
     .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT!);
 
   const session = cookies().get("appwrite-session");
-  //we check if the session is exists
+
   if (!session || !session.value) {
     throw new Error("No session");
   }
-  // attached this session to this client, 
-  // every time we want to get access we gonna get use to this get method and extracted
-  client.setSession(session.value)
+
+  client.setSession(session.value);
 
   return {
-    get account() { 
+    get account() {
       return new Account(client);
     },
   };
@@ -39,6 +38,6 @@ export async function createAdminClient() {
     },
     get user() {
       return new Users(client);
-    },
+    }
   };
 }

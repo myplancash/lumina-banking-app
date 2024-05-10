@@ -24,12 +24,11 @@ import { Loader2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { getLoggedInUser, signIn, signUp } from '@/lib/actions/user.actions';
 import PlaidLink from './PlaidLink';
-// import PlaidLink from './PlaidLink';
 
 const AuthForm = ({ type }: { type: string }) => {
   const router = useRouter();
   const [user, setUser] = useState(null);
-  const [isLoading, setIsLoading] = useState(false); 
+  const [isLoading, setIsLoading] = useState(false);
 
   const formSchema = authFormSchema(type);
 
@@ -46,12 +45,18 @@ const AuthForm = ({ type }: { type: string }) => {
     const onSubmit = async (data: z.infer<typeof formSchema>) => {
       setIsLoading(true);
 
+      
+
       try {
         // Sign up with Appwrite & create plaid token
+        if (!data.postalCode || !/^\d{5}(-\d{4})?$/.test(data.postalCode)) {
+          console.error('Invalid postal code:', data.postalCode);
+          throw new Error('Invalid postal code');
+        }
+
+        console.log('Creating Dwolla Customer with postal code:', data.postalCode);
         
         if(type === 'sign-up') {
-          //will form a new userData object, letting typescript know that the data will be there
-          // ! let typescript know that will have the data there 
           const userData = {
             firstName: data.firstName!,
             lastName: data.lastName!,
@@ -64,7 +69,7 @@ const AuthForm = ({ type }: { type: string }) => {
             email: data.email,
             password: data.password
           }
- 
+
           const newUser = await signUp(userData);
 
           setUser(newUser);
@@ -95,7 +100,7 @@ const AuthForm = ({ type }: { type: string }) => {
               height={34}
               alt="Horizon logo"
             />
-            <h1 className="text-26 font-ibm-plex-serif font-bold text-black-1">Lumina</h1>
+            <h1 className="text-26 font-ibm-plex-serif font-bold text-black-1">Horizon</h1>
           </Link>
 
           <div className="flex flex-col gap-1 md:gap-3">
@@ -115,15 +120,11 @@ const AuthForm = ({ type }: { type: string }) => {
             </h1>
           </div>
       </header>
-      {/* {user ? ( */}
+      {user ? (
         <div className="flex flex-col gap-4">
           <PlaidLink user={user} variant="primary" />
-
-
-
-
         </div>
-      {/* ) : ( */}
+      ): (
         <>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -175,7 +176,7 @@ const AuthForm = ({ type }: { type: string }) => {
             </Link>
           </footer>
         </>
-      {/* )} */}
+      )}
     </section>
   )
 }
