@@ -45,16 +45,8 @@ const AuthForm = ({ type }: { type: string }) => {
     const onSubmit = async (data: z.infer<typeof formSchema>) => {
       setIsLoading(true);
 
-      
-
       try {
         // Sign up with Appwrite & create plaid token
-        if (!data.postalCode || !/^\d{5}(-\d{4})?$/.test(data.postalCode)) {
-          console.error('Invalid postal code:', data.postalCode);
-          throw new Error('Invalid postal code');
-        }
-
-        console.log('Creating Dwolla Customer with postal code:', data.postalCode);
         
         if(type === 'sign-up') {
           const userData = {
@@ -98,9 +90,9 @@ const AuthForm = ({ type }: { type: string }) => {
               src="/icons/logo.svg"
               width={34}
               height={34}
-              alt="Horizon logo"
+              alt="Lumina logo"
             />
-            <h1 className="text-26 font-ibm-plex-serif font-bold text-black-1">Horizon</h1>
+            <h1 className="text-26 font-ibm-plex-serif font-bold text-black-1">Lumina</h1>
           </Link>
 
           <div className="flex flex-col gap-1 md:gap-3">

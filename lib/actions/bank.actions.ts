@@ -79,8 +79,11 @@ export const getAccount = async ({ appwriteItemId }: getAccountProps) => {
     const transferTransactionsData = await getTransactionsByBankId({
       bankId: bank.$id,
     });
-
-    const transferTransactions = transferTransactionsData.documents.map(
+    
+    // to prevent the error "TypeError: Cannot read properties of undefined (reading 'documents')
+    let transferTransactions = [];
+    if (transferTransactionsData && transferTransactionsData.documents) {
+      transferTransactions = transferTransactionsData.documents.map(
       (transferData: Transaction) => ({
         id: transferData.$id,
         name: transferData.name!,
@@ -89,8 +92,8 @@ export const getAccount = async ({ appwriteItemId }: getAccountProps) => {
         paymentChannel: transferData.channel,
         category: transferData.category,
         type: transferData.senderBankId === bank.$id ? "debit" : "credit",
-      })
-    );
+      }));
+    }
 
     // get institution info from plaid
     const institution = await getInstitution({
@@ -115,7 +118,7 @@ export const getAccount = async ({ appwriteItemId }: getAccountProps) => {
     };
 
     // sort transactions by date such that the most recent transaction is first
-      const allTransactions = [...transactions, ...transferTransactions].sort(
+    const allTransactions = [...transactions, ...transferTransactions].sort(
       (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
     );
 
@@ -126,7 +129,7 @@ export const getAccount = async ({ appwriteItemId }: getAccountProps) => {
   } catch (error) {
     console.error("An error occurred while getting the account:", error);
   }
-};
+}
 
 // Get bank info
 export const getInstitution = async ({
