@@ -17,7 +17,7 @@ export const createTransaction = async (transaction: CreateTransactionProps) => 
       DATABASE_ID!,
       TRANSACTION_COLLECTION_ID!,
       ID.unique(),
-      {
+      { 
         channel: 'online',
         category: 'Transfer',
         ...transaction

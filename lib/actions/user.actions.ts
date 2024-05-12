@@ -9,6 +9,7 @@ import { CountryCode, ProcessorTokenCreateRequest, ProcessorTokenCreateRequestPr
 import { plaidClient } from '@/lib/plaid';
 import { revalidatePath } from "next/cache";
 import { addFundingSource, createDwollaCustomer } from "./dwolla.actions";
+import { access } from "fs";
 
 const {
   APPWRITE_DATABASE_ID: DATABASE_ID,
@@ -293,3 +294,24 @@ export const getBankByAccountId = async ({ accountId }: getBankByAccountIdProps)
     console.log(error)
   }
 }
+
+/* export const createLinkTokenForUpdateMode = async ({ accessToken, user }: createLinkTokenForUpdateModeProps) => {
+  try {
+    const tokenParams = {
+      access_token: accessToken,
+      user: {
+        client_user_id: user.$id
+      },
+      client_name: `${user.firstName} ${user.lastName}`,
+      products: ['auth'] as Products[],
+      language: 'en',
+      country_codes:  ['US'] as CountryCode[],
+    }
+
+  const response = await plaidClient.linkTokenCreate(tokenParams);
+  
+    return parseStringify({ linkToken: response.data.link_token });
+  } catch (error) {
+    console.log(error);
+  }
+} */

@@ -177,6 +177,7 @@ declare interface PlaidLinkProps {
   user: User;
   variant?: "primary" | "ghost";
   dwollaCustomerId?: string;
+  accessToken?: string;
 }
 
 // declare type User = sdk.Models.Document & {
@@ -316,6 +317,11 @@ declare interface createBankAccountProps {
   fundingSourceUrl: string;
   shareableId: string;
 }
+
+/* declare interface createLinkTokenForUpdateModeProps {
+ user: User;
+  accessToken: string;
+} */
 
 declare interface getBanksProps {
   userId: string;

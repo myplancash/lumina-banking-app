@@ -44,7 +44,7 @@ export const Pagination = ({ page, totalPages }: PaginationProps) => {
         {page} / {totalPages}
       </p>
       <Button
-        size="lg"
+        size="lg" 
         variant="ghost"
         className="p-0 hover:bg-transparent"
         onClick={() => handleNavigation("next")}

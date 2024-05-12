@@ -6,11 +6,12 @@ import { getLoggedInUser } from '@/lib/actions/user.actions';
 import { formatAmount } from '@/lib/utils';
 import React from 'react'
 
+//we need to know which account are we trying to get the info for, we can get that from searchParams and destruct id amd page from it
 const TransactionHistory = async ({ searchParams: { id, page }}:SearchParamProps) => {
   const currentPage = Number(page as string) || 1;
   const loggedIn = await getLoggedInUser();
   const accounts = await getAccounts({ 
-    userId: loggedIn.$id 
+    userId: loggedIn.$id
   })
 
   if(!accounts) return;
@@ -22,7 +23,7 @@ const TransactionHistory = async ({ searchParams: { id, page }}:SearchParamProps
 
 
 const rowsPerPage = 10;
-const totalPages = Math.ceil(account?.transactions.length / rowsPerPage);
+const totalPages = Math.ceil(account?.transactions.length / rowsPerPage); 
 
 const indexOfLastTransaction = currentPage * rowsPerPage;
 const indexOfFirstTransaction = indexOfLastTransaction - rowsPerPage;

@@ -14,13 +14,9 @@ import {
 } from "@/components/ui/select";
 import { formUrlQuery, formatAmount } from "@/lib/utils";
 
-export const BankDropdown = ({
-  accounts = [],
-  setValue,
-  otherStyles,
-}: BankDropdownProps) => {
+export const BankDropdown = ({accounts = [], setValue, otherStyles }: BankDropdownProps) => {
   const searchParams = useSearchParams();
-  const router = useRouter();
+  const router = useRouter(); 
   const [selected, setSeclected] = useState(accounts[0]);
 
   const handleBankChange = (id: string) => {
