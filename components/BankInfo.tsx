@@ -37,7 +37,7 @@ const BankInfo = ({ account, appwriteItemId, type }: BankInfoProps) => {
       })}
     >
       <figure
-        className={`flex-center h-fit rounded-full bg-blue-100 ${colors.lightBg}`}
+        className={`flex-center h-fit rounded-full bg-pink-25 ${colors.lightBg}`}
       >
         <Image
           src="/icons/connect-bank.svg"
@@ -50,13 +50,13 @@ const BankInfo = ({ account, appwriteItemId, type }: BankInfoProps) => {
       <div className="flex w-full flex-1 flex-col justify-center gap-1">
         <div className="bank-info_content">
           <h2
-            className={`text-16 line-clamp-1 flex-1 font-bold text-blue-900 ${colors.title}`}
+            className={`text-16 line-clamp-1 flex-1 font-bold text-indigo-700 ${colors.title}`}
           >
             {account.name}
           </h2>
           {type === "full" && (
             <p
-              className={`text-12 rounded-full px-3 py-1 font-medium text-blue-700 ${colors.subText} ${colors.lightBg}`}
+              className={`text-12 rounded-full px-3 py-1 font-medium bg-pink-25 text-purple-600 ${colors.subText} ${colors.lightBg}`}
             >
               {account.subtype}
             </p>

@@ -23,34 +23,34 @@ const config = {
         fill: {
           1: "rgba(255, 255, 255, 0.10)",
         },
-        bankGradient: "#0179FE",
+        bankGradient: "#17EAD9",
         indigo: {
-          500: "#6172F3",
-          700: "#3538CD",
+          500: "#4586FF",
+          700: "#1A3C7D", // darker shade of #4586FF
         },
         success: {
-          25: "#F6FEF9",
-          50: "#ECFDF3",
-          100: "#D1FADF",
-          600: "#039855",
-          700: "#027A48",
-          900: "#054F31",
+          25: "#B2F1EC", // lighter shade of #17EAD9
+          50: "#17EAD9",
+          100: "#0D9B99", // darker shade of #17EAD9
+          600: "#4586FF",
+          700: "#1A3C7D", // darker shade of #4586FF
+          900: "#A35FEB",
         },
         pink: {
-          25: "#FEF6FB",
-          100: "#FCE7F6",
-          500: "#EE46BC",
-          600: "#DD2590",
-          700: "#C11574",
-          900: "#851651",
+          25: "#E8D4F9", // lighter shade of #A35FEB
+          100: "#A35FEB",
+          500: "#511D94", // darker shade of #A35FEB
+          600: "#4586FF",
+          700: "#1A3C7D", // darker shade of #4586FF
+          900: "#00214F",
         },
         blue: {
-          25: "#F5FAFF",
-          100: "#D1E9FF",
-          500: "#2E90FA",
-          600: "#1570EF",
-          700: "#175CD3",
-          900: "#194185",
+          25: "#B2D4FA", // lighter shade of #4586FF
+          100: "#4586FF",
+          500: "#1A3C7D", // darker shade of #4586FF
+          600: "#A35FEB",
+          700: "#511D94", // darker shade of #A35FEB
+          900: "#00214F",
         },
         sky: {
           1: "#F3F9FF",
