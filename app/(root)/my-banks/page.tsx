@@ -4,12 +4,21 @@ import { getAccounts } from '@/lib/actions/bank.actions';
 import { getLoggedInUser } from '@/lib/actions/user.actions';
 import React from 'react'
 
-const MyBanks = async () => {
-  const loggedIn = await getLoggedInUser();
-  const accounts = await getAccounts({ 
-    userId: loggedIn.$id 
-  })
+type User = {
+  $id: string;
+  firstName: string;
+  // Define the rest of the user properties here
+};
 
+type MyBanksProps = {
+  accounts: {
+    data: Account[];
+    // Define the rest of the accounts properties here
+  };
+  loggedIn: User;
+};
+
+const MyBanks: React.FC<MyBanksProps> = ({ accounts, loggedIn }) => {
   return (
     <section className='flex'>
       <div className="my-banks">
@@ -25,7 +34,7 @@ const MyBanks = async () => {
           <div className="flex flex-wrap gap-6">
             {accounts && accounts.data.map((a: Account) => (
               <BankCard 
-                key={accounts.id}
+                key={a.id}
                 account={a}
                 userName={loggedIn?.firstName}
               />
@@ -35,6 +44,20 @@ const MyBanks = async () => {
       </div>
     </section>
   )
+}
+
+export async function getServerSideProps() {
+  const loggedIn = await getLoggedInUser();
+  const accounts = await getAccounts({ 
+    userId: loggedIn.$id 
+  })
+
+  return {
+    props: {
+      accounts,
+      loggedIn
+    }
+  }
 }
 
 export default MyBanks
